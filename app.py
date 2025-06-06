@@ -1,28 +1,19 @@
-
-import os
 import pickle
-import streamlit as st
-
-model_path = os.path.join(os.path.dirname(__file__), 'linear_regression_ev_model.pkl')
-
-try:
-    with open(model_path, 'rb') as f:
-        model = pickle.load(f)
-except Exception as e:
-    st.error(f"Model loading failed: {e}")
-
-
-
-
 import streamlit as st
 import pandas as pd
-import pickle
-
 
 st.set_page_config(page_title="EV Load Predictor", page_icon="🔋")
 st.title("🔋 EV Charging Station Load Prediction")
 
 st.markdown("Enter the input values below. All fields accept numeric input only, as per your model training.")
+
+# Load model safely
+try:
+    with open('linear_regression_ev_model.pkl', 'rb') as f:
+        model = pickle.load(f)
+except Exception as e:
+    st.error(f"❌ Model loading failed: {e}")
+    st.stop()  # Stop running the app if model not loaded
 
 # Input features (all numeric)
 day_of_week = st.number_input('Day of Week (0=Mon, 6=Sun)', min_value=0, max_value=6, value=0)
@@ -56,7 +47,16 @@ input_data = pd.DataFrame([{
     'Hour_Weekend': hour_weekend
 }])
 
-# Prediction
+# Prediction button
 if st.button("⚡ Predict EV Load"):
     prediction = model.predict(input_data)
     st.success(f"🔋 Predicted EV Load: **{prediction[0]:.2f} kWh**")
+
+
+
+
+
+
+
+
+
