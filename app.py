@@ -1,9 +1,16 @@
+
 import os
 import pickle
+import streamlit as st
 
 model_path = os.path.join(os.path.dirname(__file__), 'linear_regression_ev_model.pkl')
-with open(model_path, 'rb') as f:
-    model = pickle.load(f)
+
+try:
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
+except Exception as e:
+    st.error(f"Model loading failed: {e}")
+
 
 
 
