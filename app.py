@@ -1,9 +1,16 @@
+import os
+import pickle
+
+model_path = os.path.join(os.path.dirname(__file__), 'linear_regression_ev_model.pkl')
+with open(model_path, 'rb') as f:
+    model = pickle.load(f)
+
+
+
 import streamlit as st
 import pandas as pd
 import pickle
 
-# Load trained model
-model = pickle.load(open('linear_regression_ev_model.pkl', 'rb'))
 
 st.set_page_config(page_title="EV Load Predictor", page_icon="🔋")
 st.title("🔋 EV Charging Station Load Prediction")
