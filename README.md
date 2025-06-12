@@ -28,7 +28,8 @@ EV_Load_Predictor/
 ├── requirements.txt               # Python dependencies
 └── README.md                      # Project documentation
 
-🧠 Model Overview
+
+##🧠 Model Overview
 Model: Linear Regression
 
 Built using scikit-learn
@@ -37,7 +38,7 @@ Trained on a dataset with both original and engineered features
 
 Saved using Python's pickle module for deployment
 
-🧪 Features Used for Prediction
+##🧪 Features Used for Prediction
 Day of Week (0 = Monday, ..., 6 = Sunday)
 
 Hour of Day
@@ -66,14 +67,14 @@ Hour × Weekend
 
 These features are collected via numeric input fields in the Streamlit UI and passed as a DataFrame for prediction.
 
-📈 Model Performance
+##📈 Model Performance
 Metric	Score
 R² Score	0.87
 RMSE	~2.53 kWh
 
 The model performs well for EV load forecasting under standard conditions using simple regression techniques.
 
-📊 Streamlit App Features
+##📊 Streamlit App Features
 📥 User inputs 13 numeric features related to date/time, weather, and traffic
 
 ⚡ “Predict” button triggers the trained model to estimate EV load
